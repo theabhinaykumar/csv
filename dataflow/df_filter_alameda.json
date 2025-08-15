@@ -15,6 +15,12 @@
 			"sinks": [],
 			"transformations": [],
 			"scriptLines": [
+				"parameters{",
+				"     Year as date ($Year),",
+				"     Number as string ($Number),",
+				"     Name as string ($Name),",
+				"     BDate as date ($BDate)",
+				"}",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1"

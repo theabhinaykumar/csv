@@ -84,6 +84,16 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
@@ -95,8 +105,22 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
+				"inputs": [
+					{
+						"referenceName": "DelimitedText1",
+						"type": "DatasetReference"
+					}
+				],
 				"outputs": [
 					{
 						"referenceName": "DelimitedText2",
@@ -118,7 +142,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "Facility Name",
+						"value": "@pipeline().parameters.Facility Name'Facility Name'activity('Copy data1').output",
 						"type": "Expression"
 					},
 					"condition": {
@@ -128,6 +152,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"Facility Name": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
