@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "hospital.csv"
+				"fileName": "hospital.csv",
+				"container": "blobcontainer"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
